@@ -1,5 +1,6 @@
 # DataBase_Java
 Java数据库操作工具
+```
 Forevery:
   database:
     driver: com.mysql.cj.jdbc.Driver
@@ -18,3 +19,4 @@ Forevery:
   showSql: true
   dateFormat: yyyy-MM-dd HH:mm:ss
   scanPackage: org.forevery.database
+```
