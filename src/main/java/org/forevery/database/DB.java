@@ -79,6 +79,12 @@ public final class DB {
         }
     }
 
+    /**
+     * 扫描包
+     * @param pack
+     * @param tableName
+     * @return
+     */
     private static String annTable(String pack, String tableName) {
         try {
             Class<?> klass = Class.forName(pack + "." + tableName);
