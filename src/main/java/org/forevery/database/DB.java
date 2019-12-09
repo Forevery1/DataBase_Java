@@ -17,7 +17,7 @@ import static org.forevery.database.bean.Config.*;
  */
 public final class DB {
 
-    private static final DBHelper db = new DBHelperImpl();
+    private static final DBHelper DB_HELPER = new DBHelperImpl();
 
     /**
      * 设置表
@@ -30,7 +30,7 @@ public final class DB {
         Config.Table_Name = Config.PREFIX + tableName;
         if (!pack.isEmpty() && Character.isUpperCase(tableName.charAt(0)))
             Config.Table_Name = annTable(pack, tableName);
-        return new DataBaseImpl(db);
+        return new DataBaseImpl(DB_HELPER);
     }
 
 
@@ -38,7 +38,7 @@ public final class DB {
      * 开启事务
      */
     public static void startTrans() throws Exception {
-        db.beginTran();
+        DB_HELPER.beginTran();
         isr = true;
     }
 
@@ -47,7 +47,7 @@ public final class DB {
      */
     public static void commit() throws Exception {
         if (isr_error) throw new Exception();
-        db.commit();
+        DB_HELPER.commit();
         isr = false;
     }
 
@@ -56,7 +56,7 @@ public final class DB {
      */
     public static void rollback() {
         try {
-            db.rollback();
+            DB_HELPER.rollback();
             isr = false;
         } catch (Exception e) {
             if (Config.DEBUG) System.out.println("错误信息 : " + e.getMessage());
